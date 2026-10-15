@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#efe4ce">
+  <meta name="description" content="Uma visual novel curta inspirada em O Segredo de Augusta, de Machado de Assis.">
+  <title>O Segredo de Augusta</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="book-shell">
+    <section id="menu-screen" class="menu-screen" aria-labelledby="game-title">
+      <div class="book-cover" aria-hidden="true">
+        <span class="cover-rule"></span>
+        <span class="cover-small">NOVELA BRASILEIRA · SÉCULO XIX</span>
+        <span class="cover-title">O Segredo<br><em>de Augusta</em></span>
+        <span class="cover-ornament">❧</span>
+        <span class="cover-author">Machado de Assis</span>
+        <span class="cover-rule"></span>
+      </div>
+      <div class="menu-copy">
+        <p class="eyebrow">Uma história de aparências</p>
+        <h1 id="game-title">O SEGREDO<br>DE AUGUSTA</h1>
+        <p class="menu-subtitle">Uma adaptação interativa da obra de Machado de Assis</p>
+        <p class="menu-description">Uma família, um possível casamento e uma pergunta que Augusta prefere não responder.</p>
+        <div class="menu-actions">
+          <button id="start-button" class="button button-primary">Começar <span aria-hidden="true">→</span></button>
+          <button id="about-button" class="button button-secondary">Sobre a obra <span aria-hidden="true">✦</span></button>
+        </div>
+        <button id="gallery-button" class="button button-secondary gallery-menu-button">Galeria de Finais <span aria-hidden="true">❧</span></button>
+        <p class="menu-hint">Leia · escolha · descubra o segredo</p>
+      </div>
+      <span class="menu-edition">RIO DE JANEIRO · 18—</span>
+    </section>
+
+    <section id="game-screen" class="game-screen is-hidden" aria-label="História interativa">
+      <header class="game-topbar">
+        <div class="game-brand"><span class="brand-mark" aria-hidden="true">❧</span><span>O Segredo de Augusta</span></div>
+        <div class="indicators" aria-label="Relações e posição social">
+          <div class="indicator money-indicator"><span>Saldo da família</span><strong id="money-balance">60 contos</strong></div>
+          <div class="indicator"><span>Reputação</span><strong id="reputation-stars" aria-label="Reputação"></strong></div>
+          <div class="indicator"><span>Relação com Adelaide</span><strong id="adelaide-stars" aria-label="Relação com Adelaide"></strong></div>
+          <div class="indicator trust-indicator"><span>Confiança</span><strong id="trust-stars" aria-label="Confiança"></strong></div>
+        </div>
+        <button id="characters-button" class="characters-button">Personagens <span aria-hidden="true">▤</span></button>
+        <button id="skip-known-button" class="skip-button is-hidden">Adiantar cenas conhecidas <span aria-hidden="true">»</span></button>
+      </header>
+
+      <div class="story-page">
+        <div class="story-meta"><span id="chapter-name">A família</span><span id="scene-counter">Cena 1</span></div>
+        <div id="scene-card" class="scene-card">
+          <div class="character-portrait" id="character-portrait" aria-hidden="true"><span id="portrait-initials">AU</span></div>
+          <div class="character-info"><span class="character-kicker">PERSONAGEM</span><h2 id="character-name">Augusta</h2><span id="character-role" class="character-role"></span></div>
+          <div class="dialogue-rule"><span>✦</span></div>
+          <p id="dialogue-text" class="dialogue-text"></p>
+          <div id="revelation" class="revelation is-hidden" aria-live="polite"></div>
+          <div id="choice-area" class="choice-area"></div>
+          <div id="consequence" class="consequence is-hidden" aria-live="polite"></div>
+          <button id="continue-button" class="button button-primary continue-button">Continuar <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="page-footer"><span>Uma adaptação interativa</span><span aria-hidden="true">✦</span><span>Machado de Assis</span></div>
+      </div>
+      <div id="characters-panel" class="modal-backdrop is-hidden" role="presentation">
+        <section class="characters-modal" role="dialog" aria-modal="true" aria-labelledby="characters-title">
+          <button id="close-characters" class="modal-close" aria-label="Fechar">×</button>
+          <p class="eyebrow">Caderno de visitas · elenco</p>
+          <h2 id="characters-title">Personagens</h2>
+          <div id="character-list" class="character-list"></div>
+          <button id="characters-done" class="button button-primary">Voltar à cena</button>
+        </section>
+      </div>
+    </section>
+
+    <div id="about-modal" class="modal-backdrop is-hidden" role="presentation">
+      <section class="about-modal" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <button id="close-about" class="modal-close" aria-label="Fechar">×</button>
+        <p class="eyebrow">Sobre a obra</p>
+        <h2 id="about-title">Machado de Assis e Augusta</h2>
+        <p>Machado de Assis (1839–1908) foi um dos principais escritores brasileiros. Em “O Segredo de Augusta”, conto ambientado na sociedade do século XIX, vaidade e posição social se misturam aos interesses da família e ao casamento de Adelaide.</p>
+        <p>O segredo de Augusta é seu medo de envelhecer e, sobretudo, de se tornar avó: o futuro da filha ameaça a juventude que ela deseja conservar.</p>
+        <p class="adaptation-note">O saldo, as despesas, a visita de Carlota e as escolhas ramificadas são recursos ficcionais desta adaptação, não acontecimentos literais do conto.</p>
+        <button id="about-done" class="button button-primary">Entendi</button>
+      </section>
+    </div>
+    <div id="gallery-modal" class="modal-backdrop is-hidden" role="presentation">
+      <section class="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="gallery-title">
+        <button id="close-gallery" class="modal-close" aria-label="Fechar galeria">×</button>
+        <p class="eyebrow">Caderno de desfechos</p>
+        <h2 id="gallery-title">Galeria de Finais</h2>
+        <div id="gallery-content" class="gallery-content"></div>
+        <div class="gallery-actions">
+          <button id="gallery-back" class="button button-secondary is-hidden">Voltar à galeria</button>
+          <button id="gallery-menu" class="button button-primary">Voltar ao menu</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
